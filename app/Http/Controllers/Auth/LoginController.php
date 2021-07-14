@@ -39,14 +39,32 @@ class LoginController extends Controller
     }
 
     public function adminLogin(Request $request){
-        if(Auth::check() && Auth::user()->role->id==1) {
-            $this->redirectTo=route('superadmin.dashboard');
-        }elseif(Auth::check() && Auth::user()->role->id==2){
-            $this->redirectTo=route('admin.dashboard');     
-        }elseif(Auth::check() && Auth::user()->role->id==3){
-            $this->redirectTo=route('editor.dashboard');     
+      
+        $input = $request->all();
+   
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+   
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->role_id == 1) {
+                return redirect()->route('superadmin.dashboard');
+            }elseif(auth()->user()->role_id == 2){
+                $this->redirectTo=route('admin.dashboard');   
+            }elseif(auth()->user()->role_id == 3){
+                $this->redirectTo=route('editor.dashboard');
+            }
+
+            else{
+                $this->redirectTo=route('author.dashboard'); 
+            }
         }else{
-            $this->redirectTo=route('author.dashboard');     
+            return redirect()->route('login')
+                ->with('error','Email-Address And Password Are Wrong.');
         }
+
+
     }
 }
