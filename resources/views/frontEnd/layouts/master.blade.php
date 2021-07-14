@@ -241,7 +241,7 @@
                          </ul>
                            <ul class="footer-link">
                             <a class="d-block" href="/flingex.apk" role="button">
-                                <img class="d-app-icon" src="https://mmart.com.bd/storage/app/png/google_app.png" alt="" style="max-width: 250px">
+                                <img class="d-app-icon" src="{{asset('frontEnd')}}/images/google_app.png" alt="" style="max-width: 250px">
                             </a>
                              <div class="social-icon">
                                  <a class="facebook" href="https://www.facebook.com/flingex" target="_blank"><i class="lni-facebook-filled"></i></a>
