@@ -23,6 +23,7 @@
               <div class="col-sm-2">
                 <input type="date" class="flatDate form-control" placeholder="Date To" name="endDate">
               </div>
+            
               <!-- col end -->
               <div class="col-sm-2">
                 <button type="submit" class="btn btn-success">Submit </button>
