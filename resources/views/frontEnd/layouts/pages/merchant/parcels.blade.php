@@ -71,7 +71,7 @@
                          @php
                             $deliverymanInfo = App\Deliveryman::find($value->deliverymanId);
                           @endphp
-                          @if($value->deliverymanId) {{$deliverymanInfo->name}} @else Not Asign @endif
+                          @if($value->deliverymanId) {{@$deliverymanInfo->name}} @else Not Asign @endif
                      </td>
                     <td> {{$value->cod}}</td>
                     <td> {{(int)$value->deliveryCharge+(int)$value->codCharge}}</td>
