@@ -184,7 +184,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ z('login') }}">
+                    <form method="POST" action="{{ url('login/admin') }}">
                         @csrf
 
                         <div class="form-group row">
