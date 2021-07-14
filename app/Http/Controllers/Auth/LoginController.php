@@ -33,8 +33,13 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct()
-    {
-         if(Auth::check() && Auth::user()->role->id==1) {
+    {        
+
+        $this->middleware('guest')->except('logout');
+    }
+
+    public function adminLogin(Request $request){
+        if(Auth::check() && Auth::user()->role->id==1) {
             $this->redirectTo=route('superadmin.dashboard');
         }elseif(Auth::check() && Auth::user()->role->id==2){
             $this->redirectTo=route('admin.dashboard');     
@@ -43,7 +48,5 @@ class LoginController extends Controller
         }else{
             $this->redirectTo=route('author.dashboard');     
         }
-
-        $this->middleware('guest')->except('logout');
     }
 }

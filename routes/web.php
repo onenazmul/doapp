@@ -34,6 +34,7 @@ Route::get('/migrate', function() {
 });
 
 Route::post('visitor/contact','VisitorController@visitorcontact');
+Route::post('login/admin','Auth\LoginController@adminLogin');
 Route::post('merchant/support','VisitorController@merchantsupport');
 Route::post('career/apply','VisitorController@careerapply');
  Route::post('contact', 'VisitorController@contact_add');
