@@ -11,7 +11,7 @@
                 @foreach($agent as $a)
                 <option <?php if ($aid==$a->id) {
                   echo "selected";
-                } ?> value="{{$a->id}}">{{$a->name}}</option>
+                } ?> value="{{$a->id}}">{{@$a->name}}</option>
                 @endforeach
             </select>
         </div>
@@ -140,7 +140,7 @@
 
                 <td>{{$value->recipientAddress}}</td>
                 <td>{{$value->recipientPhone}}</td>
-                <td>@if($value->deliverymanId) {{$deliverymanInfo->name}} @endif</td>
+                <td>@if($value->deliverymanId) {{@$deliverymanInfo->name}} @endif</td>
                 <!-- Modal -->
 
                 <!-- Modal end -->
