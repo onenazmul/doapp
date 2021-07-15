@@ -1,7 +1,7 @@
 @extends('backEnd.layouts.master')
 @section('title','Hub report')
 @section('content')
-<form action="{{url('admin/hub/report')}}" method="get">
+<form action="{{url('admin/Hub-report')}}" method="get">
 @csrf
     <div class="row p-2">
         <div class="col-md-6">
