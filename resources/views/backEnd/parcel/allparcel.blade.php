@@ -120,7 +120,7 @@
                           <td > {{$value->recipientAddress}} </td>
                           <td>  {{$value->recipientPhone}}</td>
                          
-                          <td>@if($value->deliverymanId) {{$deliverymanInfo->name}} <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#asignModal{{$value->id}}">Change Asign</button> @else <button class="btn btn-primary" data-toggle="modal" data-target="#asignModal{{$value->id}}">Asign</button> @endif</td>
+                          <td>@if($value->deliverymanId) {{@$deliverymanInfo->name}} <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#asignModal{{$value->id}}">Change Asign</button> @else <button class="btn btn-primary" data-toggle="modal" data-target="#asignModal{{$value->id}}">Asign</button> @endif</td>
                           <!-- Modal -->
                           <div id="asignModal{{$value->id}}" class="modal fade" role="dialog">
                             <div class="modal-dialog">
@@ -138,7 +138,7 @@
                                       <select name="deliverymanId" class="form-control" id="">
                                         <option value="">Select</option>
                                         @foreach($deliverymen as $key=>$deliveryman)
-                                        <option value="{{$deliveryman->id}}">{{$deliveryman->name}}</option>
+                                        <option value="{{$deliveryman->id}}">{{@$deliveryman->name}}</option>
                                         @endforeach
                                       </select>
                                     </div>
@@ -178,7 +178,7 @@
                                       <select name="agentId" class="form-control" id="">
                                         <option value="">Select</option>
                                         @foreach($agents as $key=>$agent)
-                                        <option value="{{$agent->id}}">{{$agent->name}}</option>
+                                        <option value="{{$agent->id}}">{{@$agent->name}}</option>
                                         @endforeach
                                       </select>
                                     </div>
