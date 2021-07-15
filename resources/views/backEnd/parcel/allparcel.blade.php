@@ -497,7 +497,7 @@
                         @endforeach
                       </tfoot>
                     </table>
-                   
+                   {{$show_data->links()}}
                   </div>
                   <!-- /.card-body -->
                 </div>

@@ -123,7 +123,7 @@ class ParcelManageController extends Controller
           ->where('parcels.trackingCode',$request->trackId)
           ->orderBy('id','DESC')
           ->select('parcels.*','nearestzones.zonename','merchants.firstName','merchants.lastName','merchants.pickLocation','merchants.phoneNumber','merchants.emailAddress','merchants.companyName','merchants.status as mstatus','merchants.id as mid')
-          ->get();
+          ->paginate(5000);
        }elseif($request->merchantId!=NULL){
          $show_data = DB::table('parcels')
           ->join('merchants', 'merchants.id','=','parcels.merchantId')
@@ -131,7 +131,7 @@ class ParcelManageController extends Controller
           ->where('parcels.merchantId',$request->merchantId)
           ->orderBy('id','DESC')
           ->select('parcels.*','nearestzones.zonename','merchants.firstName','merchants.lastName','merchants.pickLocation','merchants.phoneNumber','merchants.emailAddress','merchants.companyName','merchants.status as mstatus','merchants.id as mid')
-      ->get();
+      ->paginate(5000);
        }elseif($request->phoneNumber!=NULL){
         $show_data = DB::table('parcels')
           ->join('merchants', 'merchants.id','=','parcels.merchantId')
@@ -139,7 +139,7 @@ class ParcelManageController extends Controller
           ->where('parcels.recipientPhone',$request->phoneNumber)
           ->orderBy('id','DESC')
           ->select('parcels.*','nearestzones.zonename','merchants.firstName','merchants.lastName','merchants.pickLocation','merchants.phoneNumber','merchants.emailAddress','merchants.companyName','merchants.status as mstatus','merchants.id as mid')
-       ->get();
+       ->paginate(5000);
        }elseif($request->startDate!=NULL && $request->endDate!=NULL){
         $show_data = DB::table('parcels')
           ->join('merchants', 'merchants.id','=','parcels.merchantId')
@@ -147,7 +147,7 @@ class ParcelManageController extends Controller
           ->whereBetween('parcels.created_at',[$request->startDate, $request->endDate])
           ->orderBy('id','DESC')
           ->select('parcels.*','nearestzones.zonename','merchants.firstName','merchants.lastName','merchants.phoneNumber','merchants.pickLocation','merchants.emailAddress','merchants.companyName','merchants.status as mstatus','merchants.id as mid')
-        ->get();
+        ->paginate(5000);
        }elseif($request->phoneNumber!=NULL  && $request->startDate!=NULL && $request->endDate!=NULL){
          $show_data = DB::table('parcels')
           ->join('merchants', 'merchants.id','=','parcels.merchantId')
@@ -156,7 +156,7 @@ class ParcelManageController extends Controller
           ->whereBetween('parcels.created_at',[$request->startDate, $request->endDate])
           ->orderBy('id','DESC')
           ->select('parcels.*','nearestzones.zonename','merchants.firstName','merchants.lastName','merchants.phoneNumber','merchants.pickLocation','merchants.emailAddress','merchants.companyName','merchants.status as mstatus','merchants.id as mid')
-        ->get();
+        ->paginate(5000);
        }elseif($request->merchantId!=NULL && $request->startDate!=NULL && $request->endDate!=NULL){
          $show_data = DB::table('parcels')
           ->join('merchants', 'merchants.id','=','parcels.merchantId')
@@ -165,14 +165,14 @@ class ParcelManageController extends Controller
           ->whereBetween('parcels.created_at',[$request->startDate, $request->endDate])
           ->orderBy('id','DESC')
           ->select('parcels.*','nearestzones.zonename','merchants.firstName','merchants.lastName','merchants.phoneNumber','merchants.pickLocation','merchants.emailAddress','merchants.companyName','merchants.status as mstatus','merchants.id as mid')
-        ->get();
+        ->paginate(5000);
        }else{
         $show_data = DB::table('parcels')
          ->join('merchants', 'merchants.id','=','parcels.merchantId')
          ->join('nearestzones', 'parcels.reciveZone','=','nearestzones.id')
          ->orderBy('id','DESC')
          ->select('parcels.*','nearestzones.zonename','merchants.firstName','merchants.lastName','merchants.phoneNumber','merchants.pickLocation','merchants.emailAddress','merchants.companyName','merchants.status as mstatus','merchants.id as mid')
-        ->get();
+        ->paginate(5000);
         }
         
         
